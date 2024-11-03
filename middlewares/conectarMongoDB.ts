@@ -11,14 +11,14 @@ export const conectarMongoDb = (handler: NextApiHandler) =>
         }
         // Conectar ao banco
         //Obter a variavel de ambiente preenchinda no 'env'
-        const { Coexao_DBMongo } = process.env;
+        const { Conexao_DBMongo } = process.env;
         // se env estiver vazia abortar o uso do sistema e avisar o programador
-        if (!Coexao_DBMongo) {
+        if (!Conexao_DBMongo) {
             return res.status(500).json({ erro: "Env não informado para a conexão" });
         }
         mongoose.connection.on('connected', () => console.log('Banco conectado com sucesso'));
         mongoose.connection.on('error', error => console.log('Erro ao conectar ao banco de dados ${error}'));
-        await mongoose.connect(Coexao_DBMongo);
+        await mongoose.connect(Conexao_DBMongo);
         // Finalizad0 vamos seguindo em frente
         return handler(req,res);
 
