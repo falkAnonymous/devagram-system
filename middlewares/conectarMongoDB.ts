@@ -17,7 +17,7 @@ export const conectarMongoDb = (handler: NextApiHandler) =>
             return res.status(500).json({ erro: "Env não informado para a conexão" });
         }
         mongoose.connection.on('connected', () => console.log('Banco conectado com sucesso'));
-        mongoose.connection.on('error', error => console.log('Erro ao conectar ao banco de dados ${error}'));
+        mongoose.connection.on('error', errors => console.log(`Erro ao conectar ao banco de dados ${errors}`));
         await mongoose.connect(Conexao_DBMongo);
         // Finalizad0 vamos seguindo em frente
         return handler(req,res);

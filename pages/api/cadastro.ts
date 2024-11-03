@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import type { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg";
 import type { CadastroUsuario } from "../../types/CadastroUsuario";
 import { UsuarioModel } from '../../model/UsuarioModel'
-import {conectarMongoDb} from '../../middlewares/conectarMongoDB'
+import { conectarMongoDb } from '../../middlewares/conectarMongoDB'
 
 const endpointCadastro =
     async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg>) => {
@@ -27,4 +27,5 @@ const endpointCadastro =
         }
         res.status(405).json({ erro: 'Método negado' })
     }
+
 export default conectarMongoDb(endpointCadastro);
